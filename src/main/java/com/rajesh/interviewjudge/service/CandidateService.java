@@ -210,4 +210,36 @@ public class CandidateService {
 
         return candidateRepository.save(candidate);
     }
+
+    public Candidate scoreResume(Long id) {
+
+        Candidate candidate = candidateRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Candidate not found"));
+
+        String skills = candidate.getSkills();
+
+        int score = 0;
+
+        if (skills != null) {
+
+            String s = skills.toLowerCase();
+
+            if (s.contains("java")) score += 20;
+            if (s.contains("python")) score += 20;
+            if (s.contains("sql")) score += 20;
+            if (s.contains("spring")) score += 20;
+            if (s.contains("machine learning")) score += 20;
+        }
+
+        candidate.setResumeScore((double) score);
+
+        if (score >= 60) {
+            candidate.setResult("SELECTED");
+        } else {
+            candidate.setResult("REJECTED");
+        }
+
+        return candidateRepository.save(candidate);
+    }
 }

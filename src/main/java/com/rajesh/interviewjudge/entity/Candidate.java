@@ -27,4 +27,8 @@ public class Candidate {
 
     @Column(length = 1000)
     private String skills;
+
+    private Double resumeScore;
+
+    private String result;
 }

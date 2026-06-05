@@ -77,4 +77,10 @@ public class CandidateController {
 
         return candidateService.analyzeResume(id);
     }
+
+    @GetMapping("/scoreResume/{id}")
+    public Candidate scoreResume(@PathVariable Long id) {
+
+        return candidateService.scoreResume(id);
+    }
 }

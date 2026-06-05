@@ -71,4 +71,10 @@ public class CandidateController {
                 aptitude
         );
     }
+
+    @GetMapping("/analyzeResume/{id}")
+    public Candidate analyzeResume(@PathVariable Long id) {
+
+        return candidateService.analyzeResume(id);
+    }
 }

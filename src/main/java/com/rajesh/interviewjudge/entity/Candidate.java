@@ -21,4 +21,10 @@ public class Candidate {
     private String phone;
 
     private String resumePath;
+
+    @Column(length = 10000)
+    private String extractedText;
+
+    @Column(length = 1000)
+    private String skills;
 }
